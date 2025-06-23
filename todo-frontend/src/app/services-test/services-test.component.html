@@ -1,4 +1,8 @@
-<div class="card mb-4">
+
+    <div class="container mt-5">
+      <h2>Auth Service Test</h2>
+      
+      <div class="card mb-4">
   <div class="card-body">
     <h4 class="card-title">Register</h4>
     <form (ngSubmit)="onRegister()" #registerForm="ngForm">
@@ -29,3 +33,41 @@
     </form>
   </div>
 </div>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4 class="card-title">Login</h4>
+          <div class="mb-3">
+            <input [(ngModel)]="loginData.email" placeholder="Email" class="form-control">
+          </div>
+          <div class="mb-3">
+            <input [(ngModel)]="loginData.password" type="password" placeholder="Password" class="form-control">
+          </div>
+          <button (click)="onLogin()" class="btn btn-success">Login</button>
+          <p *ngIf="loginResult" class="mt-2">Result: {{ loginResult | json }}</p>
+          <p *ngIf="token" class="mt-2">Token: {{ token }}</p>
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4 class="card-title">Task Service Test</h4>
+          <div class="mb-3">
+            <input [(ngModel)]="newTask.title" placeholder="Task title" class="form-control">
+          </div>
+          <button (click)="createTask()" class="btn btn-info me-2">Create Task</button>
+          <button (click)="getTasks()" class="btn btn-secondary">Get Tasks</button>
+          <button (click)="logout()" class="btn btn-danger float-end">Logout</button>
+          
+          <div *ngIf="tasks" class="mt-3">
+            <h5>Tasks:</h5>
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let task of tasks">
+                {{ task.title }} (ID: {{ task.id }})
+              </li>
+            </ul>
+          </div>
+          <p *ngIf="taskResult" class="mt-2">Result: {{ taskResult | json }}</p>
+        </div>
+      </div>
+    </div>

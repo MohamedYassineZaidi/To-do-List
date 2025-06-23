@@ -12,10 +12,13 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string) {
-    return this.http.post(`${this.apiUrl}/login`, { email, password }).pipe(
-      tap((res: any) => localStorage.setItem('token', res.access_token))
-    );
-  }
+  return this.http.post(`${this.apiUrl}/login`, { email, password }).pipe(
+    tap((res: any) => {
+      localStorage.setItem('token', res.access_token); 
+      console.log('Token stored:', res.access_token); 
+    })
+  );
+}
 
   register(name: string, email: string, password: string, password_confirmation: string) {
     return this.http.post(`${this.apiUrl}/register`, { name, email, password,password_confirmation  });
