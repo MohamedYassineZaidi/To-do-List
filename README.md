@@ -19,4 +19,5 @@ DELETE http://localhost:8000/api/tasks/1
 Some of them requires a bearer token.
 
 Frontend works but I'm not really proud of it :'( 
+you can check it http://localhost:4200/test-services
 hope everything goes well.
